@@ -1,0 +1,136 @@
+<!--Menu-->
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Enterprise</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>Date: {{_date}} </li>
+      <li>|</li>
+      <li>User: {{_userName}} </li>
+      <li><a (click)='doLogOut()' href="#">Log Out</a></li>
+    </ul>
+  </div>
+</nav><br>
+
+<!--Parent container-->
+<div class="row">
+  <div class="col s12">
+    <div class="row">
+      <div class="col s5">
+        <div class="row">
+          <!--Form-->
+          <form class="col s12 FormAdd" novalidate (ngSubmit)="onSubmit(FormData.value)"
+           #FormData="ngForm">
+            <div class="row">
+              <div class="input-field col s3">
+                <input id="Units" type="text"  class="validate" name="Units"
+                [(ngModel)]="_saleDetail.Units" #Units="ngModel" required>
+                <label for="Units">Units</label>
+              </div>
+              <div class="input-field col s3">
+                <input id="Article" type="text"  class="validate" name="Article"
+                [(ngModel)]="_saleDetail.Article" #Article="ngModel" required>
+                <label for="Article">Article</label>
+              </div>
+              <div class="input-field col s3">
+                <input id="AmountUnit" type="text" class="validate"  name="AmountUnit"
+                [(ngModel)]="_saleDetail.AmountUnit" #AmountUnit="ngModel" required>
+                <label for="AmountUnit">Amount Unit</label>
+              </div>
+              <div class="input-field col s3">
+                <button type="submit" [disabled]="!FormData.form.valid" class="btn waves-effect waves-light">Add</button>
+              </div>
+            </div>       
+          </form>
+         
+          <div class="row"></div>
+          <!--Table items-->
+          <div class="col s12">
+              <button [disabled]="!_enableBtn" (click)="onSave()" 
+              class="btn blue waves-effect waves-light">Save</button>
+              <table class="bordered">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Units</th>
+                      <th>Article</th>
+                      <th>Amount Unit</th>
+                      <th>Amount Total</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of _arraySaleDetails">
+                        <td>{{item.id}}</td>
+                        <td>{{item.units}}</td>
+                        <td>{{item.article}}</td>
+                        <td>{{item.amountUnit | currency}}</td>
+                        <td>{{item.amountTotal | currency}}</td>  
+                        <td>
+                          <a href="javascript:void(0);" (click)="onDelete($event)">   
+                             <i class="material-icons">delete</i>
+                          </a>
+                        </td>  
+                    </tr>
+                  </tbody>
+                </table>
+          </div> 
+        </div>      
+      </div> 
+
+      <!--Table-->
+      <div class="col s7">
+          <table class="striped" >
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>SaleDetails</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <tr *ngFor="let item of _saleMaster"> 
+                <td>{{item.id}}</td>
+                <td>{{item.customer}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.total | currency}}</td>
+                <td>
+                  <table class="">
+                    <tr>
+                      <thead>
+                        <th>Id</th>         
+                        <th>Units</th>
+                        <th>Article</th>
+                        <th>Amount Unit</th>
+                        <th>Amount Total</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let i of item.saleDetails">
+                          <td>{{i.id}} </td>
+                          <td>{{i.units}} </td>
+                          <td>{{i.article}}</td>
+                          <td>{{i.amountUnit | currency}}</td>
+                          <td>{{i.amountTotal  | currency}}</td>
+                        </tr>
+                      </tbody>             
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      <!--</div>
+          Master : {{MasterDetail|json}} <br>
+  
+          Detail : {{SaleDetail|json}} <br><br>
+           
+          ArraySaleDetails : {{ArraySaleDetails | json}}<br>     
+          
+          
+    </div>-->
+  
+   
+  </div>
+</div>
+        

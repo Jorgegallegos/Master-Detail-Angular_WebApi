@@ -1,0 +1,21 @@
+.formlogin{
+    background-color : #EE6E73;  
+    margin-top: 100px;
+    margin-bottom: 222px;
+    padding: 10px;
+    border-radius: .3em;
+    font : white;;
+}
+
+.containerlogin{
+    background-color: #009688;
+}
+
+.picturelogin{
+    width: 100px;
+    height: 120px;
+}
+
+button[type="submit"]{
+    width: 262px;
+}

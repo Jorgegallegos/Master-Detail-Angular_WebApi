@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.nav-wrapper{
+    background-color: #26A69A !important;
+    font: white;
+    font-weight: bolder;
+   }
+.page-footer{
+    background-color: #26A69A !important;
+    font: white;
+    font-weight: bolder;
+}

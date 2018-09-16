@@ -1,0 +1,45 @@
+<div class="containerlogin">
+  <div class="container">
+    <div class="row">
+      <div class="col s4">
+          <!--<pre>
+              Form value {{loginForm.value | json}}      
+              Form status {{loginForm.status | json}}            
+              Form Valid {{loginForm.valid | json}}
+          </pre>-->
+      </div>  
+      <div class="col s4">
+        <form novalidate class="formlogin" (ngSubmit)="onSubmit(loginForm.value)"
+         #loginForm="ngForm">
+          
+          <div class="picturelogin container">
+            <img [src]="userLogo"  height="120px" width="100px" alt=""/>
+          </div>
+      
+            <label for="txtUser">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email"
+             [(ngModel)]="user.email" #txtUser="ngModel" required>  
+
+             <div *ngIf="(txtUser.invalid) && (txtUser.touched)" class="alert alert-danger">
+               emil requerido</div>
+
+            <label for="txtPassword">Password:</label>
+            <input type="password" id=password name="password" placeholder="Password"
+            [(ngModel)]="user.password" #txtPassword="ngModel"  required>
+
+            <div *ngIf="(txtPassword.invalid) && (txtPassword.touched)" class="alert alert-danger">
+                contraseña requerida</div>
+
+            <button [disabled]="!loginForm.valid" type="submit" class="waves-effect waves-light btn">Login
+                <i class="material-icons right">send</i>
+            </button>
+            <div *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+
+        </form>    
+      <div class="col s4"></div>
+    </div>
+  </div>
+</div>
+
